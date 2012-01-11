@@ -1,0 +1,53 @@
+escape ^Tt
+#termcap kterm hs@
+#terminfo kterm hs@
+termcap  xterm* 'AF=\E[3%dm:AB=\E[4%dm'
+terminfo xterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+termcap  kterm* 'AF=\E[3%dm:AB=\E[4%dm'
+terminfo kterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+termcapinfo kterm 'hs:ts=\E[?2S\E[?E\E[?%i%dT:fs=\E[?F:es:ds=\E[?E'
+termcap  vt100 'AF=\E[3%dm:AB=\E[4%dm'
+terminfo vt100* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+terminfo cygwin KJ=SJIS
+termcapinfo cygwin KJ=SJIS
+defencoding UTF-8
+
+termcap  facit|vt100|xterm LP:G0
+terminfo facit|vt100|xterm LP:G0
+
+autodetach on
+startup_message off
+shell /usr/bin/zsh
+
+defhstatus "^En:^Et"
+defscrollback 9999
+hardstatus alwayslastline "%w"
+
+hardcopydir $HOME/.screen
+hardcopy_append on
+
+## audible bell
+#vbell_msg '%x'
+vbell off
+
+## bell on hide window
+bell "Bell in window %."
+## activitiy on hide window
+activity "Activity in window %."
+
+bind 'd' setenv DISPLAY
+#bind w windowlist -b
+#bind ^p paste
+#bind  p paste
+bind ^h prev
+bind  k kill
+
+#kanji euc
+#defkanji euc
+
+#markkeys 'h=^B:l=^F:$=^E:^U=^Z:^D=^V'
+
+#screen -t root 1 
+screen -t zsh 0 
+#screen -t bash 1 
+#screen -t EMACS 0 emacs -nw
