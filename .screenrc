@@ -17,7 +17,8 @@ terminfo facit|vt100|xterm LP:G0
 
 autodetach on
 startup_message off
-shell /usr/bin/zsh
+#shell /bin/zsh
+shell -${SHELL}
 
 defhstatus "^En:^Et"
 defscrollback 9999
@@ -42,12 +43,19 @@ bind 'd' setenv DISPLAY
 bind ^h prev
 bind  k kill
 
-#kanji euc
-#defkanji euc
-
-#markkeys 'h=^B:l=^F:$=^E:^U=^Z:^D=^V'
-
 #screen -t root 1 
 screen -t zsh 0 
 #screen -t bash 1 
 #screen -t EMACS 0 emacs -nw
+
+
+# Show previous-typed command to screen title
+# # Not to show lengthy title, show only command and a first arg if exists
+##preexec() {
+##  if [ $TERM = "screen" ]; then # Not to show previous-typed command on not screen
+##    command="${(z)2}"
+##    array=(`echo $command`) # String to Array
+##    title=(`echo "$array[1] $array[2]" | cut -c1-10`)
+##    echo -ne "\ek[$title]\e\\"
+##  fi
+##}
