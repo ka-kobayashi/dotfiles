@@ -60,7 +60,7 @@ alias gls="gls --color"
 alias his="history"
 
 alias c='cd ~/git/carinfo'
-alias car='cd ~/git/carinfo'
+alias s='cd ~/git/stats'
 alias ptags='rm -f ~/.tags.php; find /usr/local/symfony/1.4/ /home/$USER/git/mitra-car -name "*.php" -o -name "*.inc" | xargs --verbose ctags -a -f ~/.tags.php -R --langmap=PHP:.php.inc --php-types=c+f+d+v+i'
 alias pgrep='find . \( -name "*.php" -o -name "*.inc" -o -name "*.yml" \) -and ! -ipath "*cache*" -print | xargs grep -in '
 alias phpcs='(cd ~/git/mitra-car; phpcs -v --standard=/home/k-kobayashi/git/mitra-car/tools/phpcs/SymfonyCar lib/util/car* lib/task/* lib/service/* lib/model/* apps/*/modules/*/actions/* --ignore=tools/,Base)'
@@ -97,7 +97,7 @@ common_precmd() {
     PROMPT="$prompt_pwd$prompt_base"
 }
 case $TERM in
-    screen)
+    screen | xterm-256color)
         preexec() {
             cmd=`echo -ne "$1" | cut -d" " -f 1`
             echo -ne "\ek!$cmd\e\\" 
@@ -122,9 +122,12 @@ esac
 
 # ruby
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=/home/k-kobayashi/.rvm/gems/ruby-2.0.0-p247/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # node
 NAVEPATH=$HOME/.nave/installed/0.11.7/bin/
 export PATH=$NAVEPATH:$PATH
 [ -f ~/.naverc ] && . ~/.naverc || true
+
+alias ptags='rm -f ~/.tags.ruby; find /usr/local/symfony/1.4/ /home/$USER/git/mitra-car -name "*.php" -o -name "*.inc" | xargs --verbose ctags -a -f ~/.tags.php -R --langmap=PHP:.php.inc --php-types=c+f+d+v+i'

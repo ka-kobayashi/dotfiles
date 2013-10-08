@@ -11,14 +11,14 @@ set title
 set linespace=0
 set wildmenu
 set showcmd
-
-
+set cursorline
 
 "syntax color
-syntax on
+"syntax on
 "colorscheme ron
-colorscheme desert
-highlight LineNr ctermfg=darkgrey
+"colorscheme desert
+"highlight LineNr ctermfg=darkgrey
+
 filetype on
 filetype indent on
 filetype plugin on
@@ -139,6 +139,25 @@ augroup AlpacaTags
   endif
 augroup END
 nnoremap <expr>tt  ':Unite tags -horizontal -buffer-name=tags -input='.expand("<cword>").'<CR>'
+
+" インデントに着色
+NeoBundle 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=233
+let g:indent_guides_color_change_percent = 30
+let g:indent_guides_guide_size = 4
+
+" solarized color
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+NeoBundle 'altercation/vim-colors-solarized'
+syntax enable
+set background=dark
+colorscheme solarized
+
 
 filetype plugin on
 filetype indent on
