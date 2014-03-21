@@ -4,6 +4,7 @@ terminfo xterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
 termcap  kterm* 'AF=\E[3%dm:AB=\E[4%dm'
 terminfo kterm* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
 termcapinfo kterm 'hs:ts=\E[?2S\E[?E\E[?%i%dT:fs=\E[?F:es:ds=\E[?E'
+termcapinfo xterm* 'Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
 termcap  vt100 'AF=\E[3%dm:AB=\E[4%dm'
 terminfo vt100* 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
 terminfo cygwin KJ=SJIS
