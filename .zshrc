@@ -27,7 +27,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups     # ignore duplication command history list
-setopt share_history        # share command history data 
+# setopt share_history        # share command history data 
 
 # コマンド履歴検索
 # Ctrl-P/Ctrl-Nで、入力中の文字から始まるコマンドの履歴が表示される。
@@ -46,7 +46,7 @@ setopt nolistbeep
 #export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 #zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
-export PATH=$PATH:~/bin:/var/lib/gems/1.8/bin/:/usr/local/symfony/1.4/data/bin/
+export PATH=~/bin:/usr/local/bin:/usr/local/mysql/bin:$PATH
 export LSCOLORS=ExFxCxdxBxegedabagacad
 export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
@@ -59,24 +59,16 @@ alias sl='ls -G -'
 alias gls="gls --color"
 alias his="history"
 
-alias c='cd ~/git/carinfo'
+alias c='cd ~/git/mitra-car'
+alias cc='cd ~/git/cashing'
 alias s='cd ~/git/stats'
-alias ptags='rm -f ~/.tags.php; find /usr/local/symfony/1.4/ /home/$USER/git/mitra-car -name "*.php" -o -name "*.inc" | xargs --verbose ctags -a -f ~/.tags.php -R --langmap=PHP:.php.inc --php-types=c+f+d+v+i'
-alias pgrep='find . \( -name "*.php" -o -name "*.inc" -o -name "*.yml" \) -and ! -ipath "*cache*" -print | xargs grep -in '
-alias phpcs='(cd ~/git/mitra-car; phpcs -v --standard=/home/k-kobayashi/git/mitra-car/tools/phpcs/SymfonyCar lib/util/car* lib/task/* lib/service/* lib/model/* apps/*/modules/*/actions/* --ignore=tools/,Base)'
-
-alias mysql_query_log="sudo tail -f /var/log/mysql/mysql_query.log"
 
 alias vim_euc="vim -c ':e ++enc=euc-jp'"
+alias vim_sjis="vim -c ':e ++enc=cp932'"
 
-export PATH=$PATH:/home/mitra/git/mitra-car/sandbox/bin
+export PATH=~/bin:/usr/local/bin:/usr/local/mysql/bin:$PATH
 
-function task_satei_coop_mail() {
-  echo "update m_member_satei_coop set mail_send_flag = 0 where id = 7;" | mysql -uroot -pateam1234 car
-  (cd ~/git/mitra-car; symfony carTask:sendMailToSateiCooperationTask)
-}
-
-MYSQL_PS1=$'[\e[36m\\R:\\m:\\s\e[0m] \e[32m\\u@\\h:\\p\e[0m \\d\\nmysql> '; export MYSQL_PS1
+# MYSQL_PS1=$'[\e[36m\\R:\\m:\\s\e[0m] \e[32m\\u@\\h:\\p\e[0m \\d\\nmysql> '; export MYSQL_PS1
 
 # http://tkengo.github.io/blog/2013/05/12/zsh-vcs-info/
 setopt prompt_subst
@@ -120,14 +112,14 @@ case $TERM in
         ;;
 esac
 
-# ruby
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-PATH=/home/k-kobayashi/.rvm/gems/ruby-2.0.0-p247/bin:$PATH
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# For Mac OS X Marveric
+MYSQL=/usr/local/mysql/bin
+export PATH=$PATH:$MYSQL
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 
-# node
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
 NAVEPATH=$HOME/.nave/installed/0.11.7/bin/
 export PATH=$NAVEPATH:$PATH
 [ -f ~/.naverc ] && . ~/.naverc || true
-
-alias ptags='rm -f ~/.tags.ruby; find /usr/local/symfony/1.4/ /home/$USER/git/mitra-car -name "*.php" -o -name "*.inc" | xargs --verbose ctags -a -f ~/.tags.php -R --langmap=PHP:.php.inc --php-types=c+f+d+v+i'
