@@ -59,8 +59,7 @@ alias sl='ls -G -'
 alias gls="gls --color"
 alias his="history"
 
-alias c='cd ~/git/mitra-car'
-alias cc='cd ~/git/cashing'
+alias c='cd ~/git/carnote'
 alias s='cd ~/git/stats'
 
 alias vim_euc="vim -c ':e ++enc=euc-jp'"

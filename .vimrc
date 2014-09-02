@@ -141,7 +141,7 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
       \ 'rev' : 'development',
       \ 'depends': ['Shougo/vimproc', 'Shougo/unite.vim'],
       \ 'autoload' : {
-      \   'commands' : ['Tags', 'TagsUpdate', 'TagsSet', 'TagsBundle', 'TagsCleanCache'],
+      \   'commands' : ['AlpacaTags', 'AlpacaTagsUpdate', 'AlpacaTagsSet', 'AlpacaTagsBundle', 'AlpacaTagsCleanCache'],
       \   'unite_sources' : ['tags']
       \ }}
 NeoBundle "git://github.com/Shougo/neocomplcache.git"
